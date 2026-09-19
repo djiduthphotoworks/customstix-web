@@ -24,3 +24,24 @@ body {
 .dark ::-webkit-scrollbar-thumb {
     background: #404040;
 }
+/* Sembunyikan scrollbar bawaan tapi tetap bisa di-swipe di HP */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Mencegah elemen meluber ke samping di layar HP kecil */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Memastikan kartu produk pas di layar HP */
+@media (max-width: 640px) {
+    #carousel-container > div {
+        min-width: 260px;
+    }
+}
