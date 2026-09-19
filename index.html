@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomStick.id - Buat Setik Drum Kustom Anda Sendiri</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased transition-colors duration-300">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl font-black tracking-wider uppercase text-neutral-900 dark:text-white">CUSTOM<span class="text-amber-500">STIX</span></span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                <a href="#ready-stock" class="hover:text-neutral-900 dark:hover:text-white transition" data-i18n="navReady">Ready Stock</a>
+                <a href="#galeri" class="hover:text-neutral-900 dark:hover:text-white transition" data-i18n="navPortfolio">Portofolio</a>
+                <a href="#testimoni" class="hover:text-neutral-900 dark:hover:text-white transition" data-i18n="navTestimoni">Testimoni</a>
+                <a href="#faq" class="hover:text-neutral-900 dark:hover:text-white transition" data-i18n="navFaq">FAQ</a>
+                <a href="#custom-section" class="hover:text-neutral-900 dark:hover:text-white transition" data-i18n="navCustom">Pesan Custom</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <!-- Tombol Ganti Bahasa -->
+                <button onclick="toggleLanguage()" class="bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 px-3 py-2.5 rounded-full text-xs font-bold flex items-center space-x-1.5 transition" title="Ganti Bahasa / Change Language">
+                    <span id="lang-label">🇬🇧 EN</span>
+                </button>
+
+                <!-- Tombol Ganti Tema (Dark/Light Mode) -->
+                <button onclick="toggleTheme()" class="bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 p-2.5 rounded-full text-sm font-medium flex items-center justify-center transition" title="Ganti Tema">
+                    <span id="theme-icon" class="text-lg">☀️</span>
+                </button>
+
+                <!-- Tombol Keranjang -->
+                <button onclick="toggleCart()" class="relative bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-300 dark:hover:border-neutral-700 px-4 py-2 rounded-full text-sm font-medium flex items-center space-x-2 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <span>Keranjang</span>
+                    <span id="cart-count" class="bg-amber-500 text-black text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-20 lg:py-28 border-b border-neutral-200 dark:border-neutral-900 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-amber-600 dark:text-amber-500 font-semibold tracking-widest text-xs uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Precision Custom Drumsticks</span>
+                <h1 class="text-4xl lg:text-6xl font-extrabold tracking-tight mt-6 leading-tight" data-i18n="heroTitle">
+                    Cetak Nama, Band, atau Logo di <span class="text-amber-500">Setik Drum</span> Anda.
+                </h1>
+                <p class="text-neutral-600 dark:text-neutral-400 mt-6 text-lg" data-i18n="heroDesc">
+                    Kayu pilihan berkualitas tinggi dengan hasil grafir laser permanen. Cocok untuk musisi panggung, merchandise band, maupun kado spesial.
+                </p>
+                <div class="mt-8 flex space-x-4">
+                    <a href="#custom-section" class="bg-amber-500 hover:bg-amber-400 text-black font-bold px-8 py-4 rounded-full transition shadow-lg shadow-amber-500/20" data-i18n="heroBtn">
+                        Mulai Desain Sekarang
+                    </a>
+                </div>
+            </div>
+            <div class="relative flex justify-center">
+                <div class="w-full h-80 lg:h-96 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-2xl">
+                    <!-- Hero Image Unsplash -->
+                    <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=1000&q=80" alt="CustomStix Hero" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Ready Stock dengan Foto Internet Profesional -->
+    <section id="ready-stock" class="py-24 max-w-7xl mx-auto px-6 border-b border-neutral-200 dark:border-neutral-900">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Instant Dispatch</span>
+                <h2 class="text-3xl font-bold tracking-tight mt-2" data-i18n="readyTitle">Galeri Produk Ready Stock</h2>
+                <p class="text-neutral-600 dark:text-neutral-400 mt-1" data-i18n="readyDesc">Stok siap kirim hari ini tanpa perlu menunggu proses kustomisasi.</p>
+            </div>
+            <div class="flex space-x-3 mt-6 md:mt-0">
+                <button onclick="scrollCarousel('left')" class="p-3 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500 transition text-neutral-900 dark:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="scrollCarousel('right')" class="p-3 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-amber-500 transition text-neutral-900 dark:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="carousel-container" class="flex space-x-6 overflow-x-auto scroll-smooth pb-4 no-scrollbar">
+            <!-- Produk 1 -->
+            <div class="min-w-[280px] md:min-w-[320px] bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                <div class="h-56 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1622151834720-ea0144f8158d?auto=format&fit=crop&w=800&q=80" alt="Classic 5A Hickory" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Ready Stock</span>
+                    <h3 class="text-lg font-bold mt-1">Classic 5A Hickory</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-1">Stok: 24 Pasang</p>
+                    <div class="flex justify-between items-center mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                        <span class="font-bold text-amber-500">Rp 75.000</span>
+                        <button onclick="addToCart('Classic 5A Hickory', 75000, 'American Hickory')" class="text-xs bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold px-3 py-2 rounded-lg transition">+ Keranjang</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Produk 2 -->
+            <div class="min-w-[280px] md:min-w-[320px] bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                <div class="h-56 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80" alt="Heavy Duty 5B" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Ready Stock</span>
+                    <h3 class="text-lg font-bold mt-1">Heavy Duty 5B</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-1">Stok: 15 Pasang</p>
+                    <div class="flex justify-between items-center mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                        <span class="font-bold text-amber-500">Rp 80.000</span>
+                        <button onclick="addToCart('Heavy Duty 5B', 80000, 'American Hickory')" class="text-xs bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold px-3 py-2 rounded-lg transition">+ Keranjang</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Produk 3 -->
+            <div class="min-w-[280px] md:min-w-[320px] bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                <div class="h-56 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Lightweight 7A Maple" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Ready Stock</span>
+                    <h3 class="text-lg font-bold mt-1">Lightweight 7A Maple</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-1">Stok: 10 Pasang</p>
+                    <div class="flex justify-between items-center mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                        <span class="font-bold text-amber-500">Rp 75.000</span>
+                        <button onclick="addToCart('Lightweight 7A Maple', 75000, 'White Maple')" class="text-xs bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold px-3 py-2 rounded-lg transition">+ Keranjang</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Produk 4 -->
+            <div class="min-w-[280px] md:min-w-[320px] bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg flex-shrink-0">
+                <div class="h-56 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=800&q=80" alt="Signature Nylon Tip" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Ready Stock</span>
+                    <h3 class="text-lg font-bold mt-1">Signature Nylon Tip</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-1">Stok: 8 Pasang</p>
+                    <div class="flex justify-between items-center mt-4 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                        <span class="font-bold text-amber-500">Rp 85.000</span>
+                        <button onclick="addToCart('Signature Nylon Tip', 85000, 'Hickory + Nylon')" class="text-xs bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold px-3 py-2 rounded-lg transition">+ Keranjang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofolio dengan Foto Internet Profesional -->
+    <section id="galeri" class="py-24 max-w-7xl mx-auto px-6 border-b border-neutral-200 dark:border-neutral-900">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold tracking-tight mb-4" data-i18n="portfolioTitle">Portofolio & Klien Band</h2>
+            <p class="text-neutral-600 dark:text-neutral-400" data-i18n="portfolioDesc">Beberapa hasil cetak setik drum kustom yang telah dipercaya oleh berbagai musisi dan band indie maupun profesional.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?auto=format&fit=crop&w=800&q=80" alt="The Thunder Project" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Rock / Indie Band</span>
+                    <h3 class="text-xl font-bold mt-1">The Thunder Project</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-2">Spesifikasi: 5A American Hickory dengan grafir logo laser hitam doff.</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1525201548942-d8732f6679a0?auto=format&fit=crop&w=800&q=80" alt="Midnight Groove" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Jazz Ensemble</span>
+                    <h3 class="text-xl font-bold mt-1">Midnight Groove</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-2">Spesifikasi: 7A White Maple ringan untuk permainan dinamis.</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden shadow-lg">
+                <div class="h-48 overflow-hidden bg-neutral-200 dark:bg-neutral-800">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" alt="Skarot Syndicate" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                </div>
+                <div class="p-6">
+                    <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Metal / Hardcore</span>
+                    <h3 class="text-xl font-bold mt-1">Skarot Syndicate</h3>
+                    <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-2">Spesifikasi: 5B Heavy Duty untuk ketahanan ekstra di atas panggung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section id="testimoni" class="py-24 max-w-7xl mx-auto px-6 border-b border-neutral-200 dark:border-neutral-900">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl font-bold tracking-tight mb-4">Apa Kata Mereka?</h2>
+            <p class="text-neutral-600 dark:text-neutral-400">Ulasan jujur dari para drummer yang sudah menggunakan setik drum custom kami untuk latihan maupun manggung.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                <div>
+                    <div class="text-amber-500 text-lg mb-3">★★★★★</div>
+                    <p class="text-neutral-700 dark:text-neutral-300 text-sm italic">"Kualitas kayunya solid banget, gak gampang gupak walau dipake hantam musik keras. Grafir nama band di setiknya juga rapi dan tajam!"</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                    <p class="font-bold text-sm">Rian Pratama</p>
+                    <p class="text-neutral-500 text-xs">Drummer of Undergetar</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                <div>
+                    <div class="text-amber-500 text-lg mb-3">★★★★★</div>
+                    <p class="text-neutral-700 dark:text-neutral-300 text-sm italic">"Pesen buat merchandise band dan hasilnya luar biasa puas. Pengirimannya aman, packing tebal, dan respon adminnya ramah."</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                    <p class="font-bold text-sm">Dimas Anggara</p>
+                    <p class="text-neutral-500 text-xs">Session Drummer Jakarta</p>
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl p-6 shadow-lg flex flex-col justify-between">
+                <div>
+                    <div class="text-amber-500 text-lg mb-3">★★★★★</div>
+                    <p class="text-neutral-700 dark:text-neutral-300 text-sm italic">"Udah langganan bikin setik custom disini buat perform reguler kafe. Balance berat stiknya pas di tangan. Recommended!"</p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+                    <p class="font-bold text-sm">Fajar Nugraha</p>
+                    <p class="text-neutral-500 text-xs">Band Indie Bandung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 max-w-4xl mx-auto px-6 border-b border-neutral-200 dark:border-neutral-900">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-amber-600 dark:text-amber-500 text-xs font-semibold uppercase tracking-wider">Pusat Bantuan</span>
+            <h2 class="text-3xl font-bold tracking-tight mt-2 mb-4" data-i18n="faqTitle">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+            <p class="text-neutral-600 dark:text-neutral-400" data-i18n="faqDesc">Temukan jawaban seputar proses kustomisasi, bahan kayu, pengiriman, dan pemesanan setik drum.</p>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden transition-colors">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-bold flex justify-between items-center text-neutral-900 dark:text-white focus:outline-none">
+                    <span>Berapa minimal order untuk pembuatan setik drum custom?</span>
+                    <span class="transform transition-transform duration-300 text-amber-500 text-xl font-bold">+</span>
+                </button>
+                <div class="faq-content hidden px-6 pb-6 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    Minimal pemesanan untuk setik drum custom grafir nama/logo adalah **1 pasang**. Namun, kami juga menyediakan harga grosir khusus untuk pemesanan dalam jumlah banyak (merchandise band atau studio musik).
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden transition-colors">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-bold flex justify-between items-center text-neutral-900 dark:text-white focus:outline-none">
+                    <span>Berapa lama estimasi proses pengerjaan setik custom?</span>
+                    <span class="transform transition-transform duration-300 text-amber-500 text-xl font-bold">+</span>
+                </button>
+                <div class="faq-content hidden px-6 pb-6 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    Proses produksi menggunakan mesin laser engraving presisi tinggi membutuhkan waktu sekitar **1 sampai 3 hari kerja** tergantung antrean pesanan dan jumlah pasang yang dipesan.
+                </div>
+            </div>
+            <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl overflow-hidden transition-colors">
+                <button onclick="toggleFaq(this)" class="w-full p-6 text-left font-bold flex justify-between items-center text-neutral-900 dark:text-white focus:outline-none">
+                    <span>Apa perbedaan kayu American Hickory dan White Maple?</span>
+                    <span class="transform transition-transform duration-300 text-amber-500 text-xl font-bold">+</span>
+                </button>
+                <div class="faq-content hidden px-6 pb-6 text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                    **American Hickory** adalah jenis kayu paling populer di dunia drummer karena kepadatannya yang tinggi, sangat kuat, dan tahan terhadap hantaman keras. **White Maple** memiliki karakteristik lebih ringan dan fleksibel, sangat nyaman untuk permainan dinamis seperti Jazz atau pukulan yang lebih cair.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Form & WhatsApp Direct -->
+    <section id="custom-section" class="py-24 max-w-4xl mx-auto px-6">
+        <div class="bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-8 lg:p-12 shadow-xl transition-colors duration-300">
+            <h2 class="text-2xl font-bold mb-2">Pesan & Kustomisasi Setik Anda</h2>
+            <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-8">Pilih spesifikasi kayu, masukkan teks/logo, serta tulis catatan atau pertanyaan untuk langsung dikirim ke WhatsApp Admin.</p>
+            
+            <form id="order-form" onsubmit="sendToWhatsApp(event)" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Ukuran / Tip Setik</label>
+                        <select id="stick-size" class="w-full bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors">
+                            <option value="5A (Standard & All-Round)">5A (Standard & All-Round) - Rp 85.000</option>
+                            <option value="5B (Heavy & Rock)">5B (Heavy & Rock) - Rp 90.000</option>
+                            <option value="7A (Light & Jazz)">7A (Light & Jazz) - Rp 85.000</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Bahan Kayu</label>
+                        <select id="wood-type" class="w-full bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors">
+                            <option value="American Hickory">American Hickory (Paling Awet)</option>
+                            <option value="White Maple">White Maple (Fleksibel & Ringan)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Teks / Nama untuk Dicetak di Setik</label>
+                    <input type="text" id="custom-text" placeholder="Contoh: NAMA BAND / NAMA KAMU" required class="w-full bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Jumlah Pasang</label>
+                        <input type="number" id="quantity" value="1" min="1" max="100" required class="w-full bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-2">Catatan / Pertanyaan Khusus</label>
+                        <input type="text" id="client-notes" placeholder="Tulis pertanyaan atau detail lain di sini..." class="w-full bg-white dark:bg-neutral-950 border border-neutral-300 dark:border-neutral-800 rounded-xl px-4 py-3 text-neutral-900 dark:text-white focus:outline-none focus:border-amber-500 transition-colors">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold py-4 rounded-xl transition mt-4 shadow-lg shadow-amber-500/20">
+                    Kirim Pesanan & Pertanyaan ke WhatsApp Admin 📱
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-100 dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800 py-16 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <span class="text-2xl font-black tracking-wider uppercase text-neutral-900 dark:text-white">CUSTOM<span class="text-amber-500">STIX</span></span>
+                <p class="text-neutral-600 dark:text-neutral-400 text-sm mt-4 leading-relaxed" data-i18n="footerDesc">
+                    Pusat pembuatan dan kustomisasi setik drum profesional dengan teknologi laser engraving presisi tinggi untuk musisi Indonesia.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-neutral-900 dark:text-white mb-4">Workshop & Kontak</h4>
+                <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-3">
+                    📍 Jl. Drummer Raya No. 45, Komplek Musik Blok C<br>
+                    Jakarta Selatan, 12420
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 text-sm mb-1">
+                    📞 WhatsApp: <a href="https://wa.me/6281234567890" target="_blank" class="text-amber-500 hover:underline">+62 812-3456-7890</a>
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 text-sm">
+                    ✉️ Email: <a href="mailto:halo@customstick.id" class="text-amber-500 hover:underline">halo@customstick.id</a>
+                </p>
+            </div>
+            <div>
+                <h4 class="font-bold text-neutral-900 dark:text-white mb-4">Ikuti Kami</h4>
+                <div class="flex flex-col space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+                    <a href="https://instagram.com/customstick.id" target="_blank" class="hover:text-amber-500 transition">📷 Instagram: @customstick.id</a>
+                    <a href="https://tiktok.com/@customstick.id" target="_blank" class="hover:text-amber-500 transition">🎬 TikTok: @customstick.id</a>
+                    <a href="https://youtube.com/@customstickid" target="_blank" class="hover:text-amber-500 transition">▶️ YouTube: CustomStix ID</a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800 text-center text-xs text-neutral-500">
+            &copy; 2026 CustomStick.id. Hak Cipta Dilindungi.
+        </div>
+    </footer>
+
+    <!-- Tombol Scroll-to-Top -->
+    <button id="scrollToTopBtn" onclick="scrollToTop()" class="fixed bottom-6 right-6 z-40 bg-amber-500 hover:bg-amber-400 text-neutral-950 p-3.5 rounded-full shadow-2xl transition-all duration-300 opacity-0 translate-y-4 pointer-events-none flex items-center justify-center" title="Kembali ke atas">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7-7"/>
+        </svg>
+    </button>
+
+    <!-- Modal Keranjang Belanja -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/50 dark:bg-black/70 backdrop-blur-sm z-50 hidden flex justify-end">
+        <div class="w-full max-w-md bg-white dark:bg-neutral-900 h-full p-6 flex flex-col justify-between border-l border-neutral-200 dark:border-neutral-800">
+            <div>
+                <div class="flex justify-between items-center mb-6 border-b border-neutral-200 dark:border-neutral-800 pb-4">
+                    <h3 class="text-xl font-bold">Keranjang Belanja</h3>
+                    <button onclick="toggleCart()" class="text-neutral-500 hover:text-neutral-900 dark:hover:text-white">&times; Tutup</button>
+                </div>
+                <div id="cart-items" class="space-y-4 overflow-y-auto max-h-[50vh]">
+                    <p class="text-neutral-500 text-sm text-center py-8">Keranjang kamu masih kosong.</p>
+                </div>
+            </div>
+            <div class="border-t border-neutral-200 dark:border-neutral-800 pt-4">
+                <div class="flex justify-between font-bold text-lg mb-4">
+                    <span>Total:</span>
+                    <span id="cart-total" class="text-amber-500">Rp 0</span>
+                </div>
+                <!-- Tombol Checkout Bersih -->
+                <button onclick="checkoutShopee()" class="w-full bg-amber-500 hover:bg-amber-400 text-neutral-950 font-bold py-3 rounded-xl transition mb-2 shadow-lg shadow-amber-500/20">Checkout Sekarang 🛒</button>
+                <button onclick="toggleCart()" class="w-full bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700 text-neutral-800 dark:text-neutral-200 font-semibold py-2 rounded-xl transition text-sm">Tutup Keranjang</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
